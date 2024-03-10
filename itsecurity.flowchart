@@ -1,0 +1,7 @@
+if HTTP port open:
+    - sitemap.xml
+    - robots.txt
+    - favicon
+        - find framework
+    - http headers
+        - Webserver SW Version -> Vulnerabilities

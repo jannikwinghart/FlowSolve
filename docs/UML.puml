@@ -1,0 +1,94 @@
+@startuml flowsolve
+
+package entity{
+    class entity.Flowchart{
+        - id: int
+        - title: String
+        - description: String
+        - nodes: List<Node>
+        - edges: List<Edge>
+        - edgeConnections: List<EdgeConnection>
+    }
+
+    abstract class entity.FlowchartComponent{
+        - id: int
+        - title: String
+        - description: String
+        - state: State
+
+        - run()
+    }
+
+    class entity.Node{
+        - inputs: List<ActionOutput>
+        - actions: List<Action>
+        - outputs: List<ActionOutput>
+    }
+
+    class entity.Edge{
+        - startNode: Node
+        - endNode: Node
+        - conditions: List<Condition>
+    }
+
+    class entity.EdgeConnection{
+        - edges: List<Edge>
+    }
+
+    class entity.EdgeConnectionAnd{
+
+    }
+
+    class entity.Action{
+
+    }
+
+    class entity.Condition{
+        + result: boolean
+        + evaluate(ActionOutput): boolean
+    }
+
+    class entity.ActionOutput{
+
+    }
+
+    enum entity.State{
+        INACTIVE
+        PREPARING
+        RUNNING
+        SUCCESSFUL
+        FAILED
+    }
+}
+
+package usecase{
+    
+}
+
+package adapter{
+
+}
+
+entity.Flowchart -> entity.Node
+entity.Flowchart -> entity.Edge
+
+entity.FlowchartComponent -> entity.State
+
+entity.Node -|> entity.FlowchartComponent
+entity.Node -> entity.Action
+entity.Node -> entity.ActionOutput
+
+entity.Edge -|> entity.FlowchartComponent
+entity.Edge -> entity.Node
+entity.Edge -> entity.Condition
+
+entity.EdgeConnection -|> entity.FlowchartComponent
+entity.EdgeConnection -> entity.Edge
+
+entity.EdgeConnectionAnd -|> entity.EdgeConnection
+
+entity.Action -|> entity.FlowchartComponent
+
+entity.Condition -|> entity.FlowchartComponent
+
+@enduml
