@@ -1,8 +1,8 @@
 from entity.Flowchart import Flowchart
-from entity.Node import Node
+from entity.nodes.Node import Node
 from entity.Edge import Edge
-from entity.actions.IpPortInputAction import IpPortInputAction
-from entity.actions.GetSitemapAction import GetSitemapAction
+from entity.nodes.IpPortInputNode import IpPortInputNode
+from entity.nodes.GetRobotsTxtNode import GetRobotsTxtNode
 
 def main():
     flowchart = Flowchart(
@@ -11,46 +11,35 @@ def main():
         description="This is the first flowchart"
     )
 
-    ip_port_input_action = IpPortInputAction(
-        id=0,
-        title="IP Port Input Action",
-        description="This action is used to input an IP address and a port"
-    )
-
-    ip_port_node = Node(
+    ip_port_node = IpPortInputNode(
         id=0,
         title="Check for Open HTTP Port",
         description="Check for an open HTTP port on the target system and enter the address",
         inputs={},
-        actions={"ip_port": ip_port_input_action},
     )
 
-    get_sitemap_action = GetSitemapAction(
+    robots_txt_node = GetRobotsTxtNode(
         id=1,
-        title="Get Sitemap Action",
-        description="This action is used to get the sitemap.xml file from the target system"
-    )
-
-    sitemap_node = Node(
-        id=1,
-        title="Get sitemap.xml",
-        description="Get the sitemap.xml file from a specified IP address and port",
-        inputs={"ip": ip_port_node.outputs["ip_port"]["ip"], "port": ip_port_node.outputs["ip_port"]["port"]},
-        actions={"sitemap": get_sitemap_action},
+        title="Get robots.txt",
+        description="Get the robots.txt file from a specified IP address and port",
+        inputs={"ip": ip_port_node.outputs["ip"], "port": ip_port_node.outputs["port"]},
     )
 
     edge1 = Edge(
         id=1,
         title="Edge 1",
         description="This is the first edge",
-        startNode=ip_port_node,
-        endNode=sitemap_node,
-        conditions=[]
+        start_node=ip_port_node,
+        end_node=robots_txt_node,
+        conditions=[],
+        parameters={"ip": "ip", "port": "port"},
     )
 
     flowchart.addNode(ip_port_node)
-    flowchart.addNode(sitemap_node)
+    flowchart.addNode(robots_txt_node)
     flowchart.addEdge(edge1)
+
+    ip_port_node.trigger()
 
     flowchart.run()
 

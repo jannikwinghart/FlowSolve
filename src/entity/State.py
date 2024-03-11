@@ -20,4 +20,5 @@ class State(enum.Enum):
     TRIGGERED = 1
     RUNNING = 2
     SUCCESSFUL = 3
-    FAILED = 4
+    CANCELLED = 4
+    FAILED = 5
