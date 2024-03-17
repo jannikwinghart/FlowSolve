@@ -1,8 +1,8 @@
 from typing import Dict
 
-from entity.NodeInput import NodeInput
-from entity.nodes.Node import Node
-from entity.State import State
+from flowsolve.entity.NodeInput import NodeInput
+from flowsolve.entity.nodes.Node import Node
+from flowsolve.entity.State import State
 
 class IpPortInputNode(Node):
     def __init__(

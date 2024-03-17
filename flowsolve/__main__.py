@@ -1,8 +1,8 @@
-from entity.Flowchart import Flowchart
-from entity.nodes.Node import Node
-from entity.Edge import Edge
-from entity.nodes.IpPortInputNode import IpPortInputNode
-from entity.nodes.GetRobotsTxtNode import GetRobotsTxtNode
+from flowsolve.entity.Flowchart import Flowchart
+from flowsolve.entity.nodes.Node import Node
+from flowsolve.entity.Edge import Edge
+from flowsolve.entity.nodes.IpPortInputNode import IpPortInputNode
+from flowsolve.entity.nodes.GetRobotsTxtNode import GetRobotsTxtNode
 
 def main():
     flowchart = Flowchart(

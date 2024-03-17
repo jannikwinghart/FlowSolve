@@ -1,7 +1,8 @@
-from entity.nodes.Node import Node
 import requests
 from typing import Dict
-from entity.NodeInput import NodeInput
+
+from flowsolve.entity.NodeInput import NodeInput
+from flowsolve.entity.nodes.Node import Node
 
 class GetSitemapNode(Node):
     def __init__(

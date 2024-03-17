@@ -1,14 +1,16 @@
-from entity.FlowchartComponent import FlowchartComponent
-from entity.nodes.Node import Node
-from entity.Edge import Edge
-from entity.State import State
+from typing import List
+
+from flowsolve.entity.FlowchartComponent import FlowchartComponent
+from flowsolve.entity.nodes.Node import Node
+from flowsolve.entity.Edge import Edge
+from flowsolve.entity.State import State
 
 class Flowchart(FlowchartComponent):
     def __init__(self, id: int, title: str, description: str) -> None:
         super().__init__(id=id, title=title, description=description)
-        self.nodes = []
-        self.edges = []
-        self.timeout = 10
+        self.nodes: List[Node] = []
+        self.edges: List[Edge] = []
+        self.timeout: int = 10
     
     def addNode(self, node: Node):
         self.nodes.append(node)

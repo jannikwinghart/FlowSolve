@@ -1,9 +1,9 @@
 from typing import List, Dict
 from abc import ABC, abstractmethod
 
-from entity.NodeInput import NodeInput
-from entity.State import State
-from entity.FlowchartComponent import FlowchartComponent
+from flowsolve.entity.NodeInput import NodeInput
+from flowsolve.entity.State import State
+from flowsolve.entity.FlowchartComponent import FlowchartComponent
 
 class Node(FlowchartComponent, ABC):
     def __init__(

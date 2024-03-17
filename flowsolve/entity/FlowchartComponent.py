@@ -7,7 +7,7 @@ Classes:
 """
 from abc import ABC, abstractmethod
 
-from entity.State import State
+from flowsolve.entity.State import State
 
 """
 FlowchartComponent

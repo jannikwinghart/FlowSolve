@@ -1,5 +1,5 @@
-from entity.FlowchartComponent import FlowchartComponent
-from entity.State import State
+from flowsolve.entity.FlowchartComponent import FlowchartComponent
+from flowsolve.entity.State import State
 
 class Condition(FlowchartComponent):
     def __init__(self, id: int, title: str, description: str) -> None:

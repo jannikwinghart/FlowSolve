@@ -1,9 +1,9 @@
 from typing import List, Dict
 
-from entity.FlowchartComponent import FlowchartComponent
-from entity.nodes.Node import Node
-from entity.State import State
-from entity.Condition import Condition
+from flowsolve.entity.FlowchartComponent import FlowchartComponent
+from flowsolve.entity.nodes.Node import Node
+from flowsolve.entity.State import State
+from flowsolve.entity.Condition import Condition
 
 class Edge(FlowchartComponent):
     def __init__(
